@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.todo.databinding.ActivityMainBinding
 import com.example.todo.db.DBManager
-import com.example.todo.db.Task
 import com.example.todo.ui.TaskAdapter
 
 class MainActivity : AppCompatActivity() {

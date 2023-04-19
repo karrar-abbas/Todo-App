@@ -4,18 +4,13 @@ import android.content.ContentValues
 import android.database.sqlite.SQLiteOpenHelper
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.todo.databinding.FragmentNewTaskSheetBinding
 import com.example.todo.databinding.FragmentUpdateTaskStatusBinding
 import com.example.todo.db.DB
-import com.example.todo.db.DBManager
 import com.example.todo.db.TaskHelper
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 
 
 class updateTaskStatus : BottomSheetDialogFragment() {
@@ -35,8 +30,6 @@ class updateTaskStatus : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         datebaseHelper= TaskHelper(requireNotNull(this.activity).application)
         addCallBacks()
-
-
     }
     private fun addCallBacks() {
         binding.apply {
@@ -55,7 +48,6 @@ class updateTaskStatus : BottomSheetDialogFragment() {
         }
 
     }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding= FragmentUpdateTaskStatusBinding.inflate(inflater,container,false)
         return binding.root
@@ -64,7 +56,6 @@ class updateTaskStatus : BottomSheetDialogFragment() {
         val newEntry= ContentValues().apply { put(DB.STATUS,choice) }
         datebaseHelper.writableDatabase.update(DB.TABLE_NAME,newEntry,"${DB.ID}="+TaskId,null)
         datebaseHelper.close()
-        val dbManager= DBManager(requireNotNull(this.activity).application)
         (activity as MainActivity?)!!.notifyAdapter()
         dismiss()
     }
