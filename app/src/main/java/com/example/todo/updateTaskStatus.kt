@@ -38,7 +38,6 @@ class updateTaskStatus : BottomSheetDialogFragment() {
 
 
     }
-
     private fun addCallBacks() {
         binding.apply {
             chipTodo.setOnCheckedChangeListener { compoundButton, b ->
@@ -57,7 +56,6 @@ class updateTaskStatus : BottomSheetDialogFragment() {
 
     }
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding= FragmentUpdateTaskStatusBinding.inflate(inflater,container,false)
         return binding.root
@@ -67,11 +65,7 @@ class updateTaskStatus : BottomSheetDialogFragment() {
         datebaseHelper.writableDatabase.update(DB.TABLE_NAME,newEntry,"${DB.ID}="+TaskId,null)
         datebaseHelper.close()
         val dbManager= DBManager(requireNotNull(this.activity).application)
-
         (activity as MainActivity?)!!.notifyAdapter()
         dismiss()
     }
-
-
-
 }

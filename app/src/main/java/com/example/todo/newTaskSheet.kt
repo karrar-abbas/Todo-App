@@ -5,18 +5,14 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.contentValuesOf
 import com.example.todo.databinding.ActivityMainBinding
 import com.example.todo.databinding.FragmentNewTaskSheetBinding
 import com.example.todo.db.DB
 import com.example.todo.db.DBManager
-import com.example.todo.db.Task
 import com.example.todo.db.TaskHelper
-import com.example.todo.ui.TaskAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.util.Calendar
 
@@ -55,7 +51,7 @@ class newTaskSheet : BottomSheetDialogFragment(){
         binding.taskDesc.setText("")
         Log.d("todoapp","insidefun")
         val dbManager=DBManager(requireNotNull(this.activity).application)
-        dbManager.readData()
+        dbManager.readAllData()
         (activity as MainActivity?)!!.notifyAdapter()
 
 
